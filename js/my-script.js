@@ -1,6 +1,14 @@
-/**
- * Created by Web App Develop-PHP on 12/19/2017.
- */
+$('#checkbox').click(function () {
+   if(this.checked){
+       $('#password').attr('type', 'text');
+   } else {
+       $('#password').attr('type', 'password');
+   }
+});
+
+
+
+
 
 function  checkFirstName() {
     var firstNameLength = $('#firstName').val().length;
@@ -50,16 +58,17 @@ $('#lastName').keyup(function () {
 
 
 function checkGender() {
-    if($('input[type="radio"]'))
-    // var genderValue = $('input[type="radio"]').value();
-    // if(genderValue == ''){
-    //     alert(genderValue);
-    // } else{
-    //     alert ('demo');
-    // }
+    var genderValue = $('input[type="radio"]:checked').val();
+    if(genderValue){
+        $('#genderError').text(' ');
+        return true;
+    } else {
+        $('#genderError'). text('Please select a gender');
+        return false;
+    }
 }
 
-checkGender();
+$input
 
 
 
@@ -154,7 +163,7 @@ $('#districtName').change(function () {
 
 
 $('#registrationForm').submit(function () {
-   if(checkFirstName() == true && checkLastName() == true && checkEmailAddress() == true && checkPassword() == true && checkConfirmPassword() == true && checkDistrictName() == true){
+   if(checkFirstName() == true && checkLastName() == true && checkEmailAddress() == true && checkPassword() == true && checkConfirmPassword() == true && checkDistrictName() == true && checkGender() == true){
        return true;
    } else {
        return false;
